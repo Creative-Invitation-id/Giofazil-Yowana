@@ -310,3 +310,41 @@ body {
   height: auto;
   object-fit: contain;
 }
+
+.curtain-drift-left {
+  transform-origin: left center;
+  animation: curtain-drift-left 6s ease-in-out infinite;
+  display: inline-block;
+}
+
+.curtain-drift-right {
+  transform-origin: right center;
+  animation: curtain-drift-right 6s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Animasi Geser ke Kiri */
+@keyframes curtain-drift-left {
+  0% {
+    transform: translateX(0) scale(1.1);
+  }
+  50% {
+    transform: translateX(-8px) scale(1.1);
+  }
+  100% {
+    transform: translateX(0) scale(1.1);
+  }
+}
+
+/* Animasi Geser ke Kanan */
+@keyframes curtain-drift-right {
+  0% {
+    transform: translateX(0) scale(1.1);
+  }
+  50% {
+    transform: translateX(8px) scale(1.1);
+  }
+  100% {
+    transform: translateX(0) scale(1.1);
+  }
+}

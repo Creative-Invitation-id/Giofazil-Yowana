@@ -71,14 +71,14 @@
           <div class="page-inner">
             <div class="slide4-wrapper anim-fade">
               <!-- FRAME KIRI -->
-              <img src="assets/images/slide4/frame-left-4.png" class="frame-left" alt="" />
+              <img src="assets/images/slide4/frame-left-4.png" class="frame-left curtain-left curtain-drift-left" alt="" />
 
               <!-- FRAME KANAN -->
-              <img src="assets/images/slide4/frame-right-4.png" class="frame-right" alt="" />
+              <img src="assets/images/slide4/frame-right-4.png" class="frame-right curtain-right curtain-drift-right" alt="" />
 
               <!-- KONTEN TEKS -->
               <div class="slide4-content">
-                <img src="assets/images/slide4/header-4.png" class="frame-middle">
+                <img src="assets/images/slide4/header-4.png" class="frame-middle" />
 
                 <div class="name-block">
                   <h3>Giofazil Afiqat S.Tr.Par</h3>
@@ -99,6 +99,18 @@
               </button>
               <button class="btn-nav-small" onclick="goToPage(4)">
                 <span>&#10140;</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page5">
+          <div class="page-inner">
+            <h2 style="text-align: center">Page 5</h2>
+
+            <div class="nav-group">
+              <button class="btn-nav-small" onclick="goToPage(3)">
+                <span style="transform: scaleX(-1)">&#10140;</span>
               </button>
             </div>
           </div>
@@ -143,6 +155,34 @@
               }, 500);
             }, 700);
           }, 600);
+        }
+        if (index === 3) {
+          const slide4 = document.querySelector(".slide4-wrapper");
+          const nav4 = document.getElementById("btnNav4");
+
+          // reset supaya bisa dipanggil ulang
+          nav4.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            slide4.classList.add("anim-fade");
+          }, 400);
+
+          // tombol muncul SETELAH curtain + drift
+          setTimeout(() => {
+            nav4.classList.add("anim-fade-center");
+          }, 700);
+        }
+
+        /* ================= PAGE 5 ================= */
+        if (index === 4) {
+          const page5 = document.getElementById("page5");
+          const nav5 = page5.querySelector(".nav-group");
+
+          nav5.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            nav5.classList.add("anim-fade-center");
+          }, 800);
         }
       }
     </script>
