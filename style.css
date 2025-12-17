@@ -53,6 +53,7 @@ body {
   position: relative;
   flex-shrink: 0;
   background: #fff;
+  overflow: hidden;
 }
 
 /* --- FRAME (Fit to Screen) --- */
@@ -253,6 +254,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 /* FRAME */
