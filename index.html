@@ -168,8 +168,33 @@
 
         <section class="page" id="page8">
           <div class="page-inner">
-            <h2 style="text-align: center">Page 8</h2>
-            <div class="nav-group" id="btnNav8" style="opacity: 0">
+            <img src="assets/images/slide8/frame-8.png" id="frame8" class="frame-top anim-fade" style="opacity: 0" alt="Frame 8" />
+            <div class="split-container">
+              
+              <div id="p8Div1" class="section-part" style="opacity: 0">
+                <img src="assets/images/slide8/content1-8.png" class="ornament" />
+              </div>
+
+              <div id="p8Div2" class="section-part p8-mid-content" style="opacity: 0">
+                <div class="rekening-wrapper">
+                  <img src="assets/images/slide8/content2-8.png" class="ornament" />
+                  
+                  <button class="btn-copy btn-copy-1" onclick="copyToClipboard('1330023837826')">
+                    <span>📋 Salin</span>
+                  </button>
+                  
+                  <button class="btn-copy btn-copy-2" onclick="copyToClipboard('1220007379350')">
+                    <span>📋 Salin</span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="p8Div3" class="section-part" style="opacity: 0">
+                </div>
+
+            </div>
+
+            <div id="btnNav8" class="nav-group" style="opacity: 0">
               <button class="btn-nav-small" onclick="goToPage(6)">
                 <span style="transform: scaleX(-1)">➜</span>
               </button>
@@ -182,8 +207,35 @@
 
         <section class="page" id="page9">
           <div class="page-inner">
-            <h2 style="text-align: center">Page 9</h2>
-            <div class="nav-group" id="btnNav9" style="opacity: 0">
+            <img src="assets/images/slide9/frame-9.png" id="frame9" class="frame-top" style="opacity: 0" alt="Frame 9" />
+
+            <div class="split-container">
+              <div id="p9Div1" class="section-part" style="opacity: 0">
+                <img src="assets/images/slide9/content1-9.png" class="ornament" />
+              </div>
+
+              <div id="p9Div2" class="section-part" style="opacity: 0; padding-bottom: 0;">
+                <img src="assets/images/slide9/content2-9.png" class="ornament" />
+              </div>
+
+              <div id="p9Div3" class="section-part p9-bot-part" style="opacity: 0">
+                <div class="btn-group-rsvp">
+                  <a href="https://api.whatsapp.com/send?phone=6281352372899&text=Permisi%2C%20saya%20%20%5BIsi%20Nama%20Anda%5D%20ingin%20mengonfirmasi%20kehadiran%20pada%20acara%20pernikahan.%20Saya%20akan%20hadir%20bersama%20%5B...%5D%20orang%20lainnya.%20Terima%20kasih%20atas%20undangannya." 
+                    class="btn-rsvp hadir" 
+                    target="_blank">
+                    HADIR
+                  </a>
+
+                  <a href="https://api.whatsapp.com/send?phone=6281352372899&text=Permisi%2C%20saya%20%20%5BIsi%20Nama%20Anda%5D.%20Terima%20kasih%20banyak%20atas%20undangan%20yang%20diberikan.%20Mohon%20maaf%2C%20saya%20berhalangan%20hadir.%20Doa%20terbaik%20untuk%20kedua%20mempelai."
+                    class="btn-rsvp tidak-hadir" 
+                    target="_blank">
+                    BERHALANGAN HADIR
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div id="btnNav9" class="nav-group" style="opacity: 0">
               <button class="btn-nav-small" onclick="goToPage(7)">
                 <span style="transform: scaleX(-1)">➜</span>
               </button>
@@ -196,7 +248,10 @@
 
         <section class="page" id="page10">
           <div class="page-inner">
-            <h2 style="text-align: center">Page 10</h2>
+            <div class="img-last" id="lastImageContent" style="opacity: 0">
+              <img src="assets/images/slide10/content-10.png" alt="Thank You" />
+            </div>
+
             <div class="nav-group" id="btnNav10" style="opacity: 0">
               <button class="btn-nav-small" onclick="goToPage(8)">
                 <span style="transform: scaleX(-1)">➜</span>
@@ -208,6 +263,12 @@
     </div>
 
     <script>
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Nomor rekening berhasil disalin: " + text);
+        });
+      }
+
       function goToPage(index) {
         const container = document.getElementById("pagesContainer");
         container.style.transform = `translateX(-${index * 10}%)`;
@@ -328,22 +389,81 @@
           }, 400);
         }
 
-        /* ================= PAGE 8-10 ================= */
-        const dynamicNavs = [
-          { idx: 7, id: "btnNav8" },
-          { idx: 8, id: "btnNav9" },
-          { idx: 9, id: "btnNav10" }
-        ];
+        if (index === 7) {
+          const div1 = document.getElementById("p8Div1");
+          const div2 = document.getElementById("p8Div2");
+          const div3 = document.getElementById("p8Div3");
+          const nav8 = document.getElementById("btnNav8");
 
-        dynamicNavs.forEach(item => {
-          if (index === item.idx) {
-            const el = document.getElementById(item.id);
-            el.classList.remove("anim-fade-center");
+          [div1, div2, div3].forEach(el => el.classList.remove("anim-fade"));
+          nav8.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            div1.classList.add("anim-fade");
             setTimeout(() => {
-              el.classList.add("anim-fade-center");
-            }, 700);
-          }
-        });
+              div2.classList.add("anim-fade");
+              setTimeout(() => {
+                div3.classList.add("anim-fade");
+                setTimeout(() => {
+                  nav8.classList.add("anim-fade-center");
+                }, 500);
+              }, 600);
+            }, 600);
+          }, 400);
+        }
+
+        if (index === 8) {
+          const div1 = document.getElementById("p9Div1");
+          const div2 = document.getElementById("p9Div2");
+          const div3 = document.getElementById("p9Div3");
+          const frame9 = document.getElementById("frame9");
+          const nav9 = document.getElementById("btnNav9");
+
+          // Reset Animasi agar bisa diulang saat navigasi balik
+          [div1, div2, div3, frame9].forEach(el => el.classList.remove("anim-fade"));
+          nav9.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            frame9.classList.add("anim-fade");
+            div1.classList.add("anim-fade");
+            
+            setTimeout(() => {
+              div2.classList.add("anim-fade");
+              
+              setTimeout(() => {
+                div3.classList.add("anim-fade");
+                
+                setTimeout(() => {
+                  nav9.classList.add("anim-fade-center");
+                }, 500);
+              }, 600);
+            }, 600);
+          }, 400);
+        }
+
+
+        if (index === 9) {
+          const lastImg = document.getElementById("lastImageContent");
+          const nav10 = document.getElementById("btnNav10");
+
+          // Reset dulu
+          lastImg.classList.remove("anim-fade");
+          nav10.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            // Munculkan gambar
+            lastImg.classList.add("anim-fade");
+
+            // Munculkan tombol navigasi sedikit telat
+            setTimeout(() => {
+              nav10.classList.add("anim-fade-center");
+            }, 600);
+          }, 400);
+        }
+
+        
+
+        
       }
     </script>
   </body>
