@@ -428,6 +428,34 @@ body {
   transform: translateX(-50%);
 }
 
+/* ===== MIDDLE (FOTO) - SEKARANG LEBIH BESAR ===== */
+.p5-middle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0; /* Memberi ruang sedikit lebih lega */
+}
+
+.p5-middle .p5-img {
+  max-width: 320px;   /* Ukuran ditingkatkan secara signifikan */
+  width: 90%;         /* Agar fleksibel di layar kecil */
+  height: auto;
+  border-radius: 8px;
+}
+
+/* ===== BOTTOM (AYAT) - SEKARANG LEBIH LEBAR ===== */
+.p5-bottom {
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.p5-bottom .p5-img {
+  max-width: 380px;   /* Ukuran ditingkatkan agar teks ayat terbaca jelas */
+  width: 95%;         /* Hampir memenuhi lebar container */
+  height: auto;
+}
+
 
 /* Styling Tombol Maps */
 .btn-maps {
