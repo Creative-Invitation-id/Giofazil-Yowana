@@ -17,25 +17,18 @@
 }
 
 body {
-  margin: 0;
-  font-family: "Playfair", serif;
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow: hidden;
+  /* Fallback untuk browser lama */
+  height: 100vh; 
+  /* Unit modern: svh (small) atau dvh (dynamic) */
+  height: 100svh; 
+  height: 100dvh; 
 }
 
-/* --- MOBILE WRAPPER (Simulator HP) --- */
 .mobile-wrapper {
-  width: 100%;
-  max-width: 430px; 
-  height: 100vh;
-  background: #fff;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  /* Gunakan dvh agar wrapper selalu mengikuti area layar yang terlihat saja */
+  height: 100dvh; 
+  display: flex;
+  flex-direction: column;
 }
 
 /* --- PAGES CONTAINER (Horizontal Slide) --- */
