@@ -47,10 +47,40 @@
 
             <section class="page" id="page3">
                 <div class="page-inner">
-                    <h2>Page 3</h2>
-                    <p>Isi konten halaman 3 selanjutnya.</p>
+                    
+                    <div class="split-container">
+                        <div id="p3Div1" class="section-part p3-top-part" style="opacity: 0;">
+                            <img src="assets/images/slide3/content1-3.png" class="ornament content-kecil" />
+                        </div>
+
+                        <div id="p3Div2" class="section-part p3-bot-part" style="opacity: 0;">
+                            <img src="assets/images/slide3/content2-3.png" class="ornament" />
+                            <img src="assets/images/slide3/frame-bot-3.png" id="frameBot3" class="frame-bot-inside" style="opacity: 0;" />
+                        </div>
+                    </div>
+
+                    <div id="btnNav3" class="nav-group" style="opacity: 0;">
+                        <button class="btn-nav-small" onclick="goToPage(1)">
+                            <span style="display: inline-block; transform: scaleX(-1);">&#10140;</span>
+                        </button>
+                        <button class="btn-nav-small" onclick="goToPage(3)">
+                            <span>&#10140;</span>
+                        </button>
+                    </div>
                 </div>
             </section>
+
+            <section class="page" id="page4">
+                <div class="page-inner">
+                    <h2>Page 4 Content</h2>
+                    <div class="nav-group">
+                        <button class="btn-nav-small" onclick="goToPage(2)">
+                            <span style="display: inline-block; transform: scaleX(-1);">&#10140;</span>
+                        </button>
+                        <button class="btn-nav-small" onclick="goToPage(0)">
+                            <span>&#10140;</span>
+                        </button>
+                    </div> 
 
         </div>
     </div>
@@ -67,6 +97,30 @@
                 setTimeout(() => {
                     content.classList.add('anim-fade'); // Untuk gambar (kiri-kanan standar)
                     button.classList.add('anim-fade-center'); // KHUSUS TOMBOL agar tetap di tengah
+                }, 600);
+            }
+
+            // Animasi Page 3 (Index 2)
+            if (index === 2) {
+                const div1 = document.getElementById('p3Div1');
+                const div2 = document.getElementById('p3Div2');
+                const frame = document.getElementById('frameBot3');
+                const nav = document.getElementById('btnNav3');
+
+                setTimeout(() => {
+                    // 1. Munculkan Div 1
+                    div1.classList.add('anim-fade');
+                    
+                    setTimeout(() => {
+                        // 2. Munculkan Div 2 & Frame
+                        div2.classList.add('anim-fade');
+                        frame.classList.add('anim-fade');
+                        
+                        // 3. Munculkan Tombol Navigasi terakhir
+                        setTimeout(() => {
+                            nav.classList.add('anim-fade-center');
+                        }, 500);
+                    }, 700);
                 }, 600);
             }
         }

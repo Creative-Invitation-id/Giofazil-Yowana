@@ -19,12 +19,12 @@
 body {
   margin: 0;
   font-family: "Playfair", serif;
-  background: #000; /* Latar belakang hitam di luar container */
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow: hidden; /* Mencegah scroll pada body utama */
+  overflow: hidden;
 }
 
 /* --- MOBILE WRAPPER (Simulator HP) --- */
@@ -34,7 +34,7 @@ body {
   height: 100vh;
   background: #fff;
   position: relative;
-  overflow: hidden; /* Sembunyikan scrollbar */
+  overflow: hidden;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
 }
 
@@ -42,13 +42,13 @@ body {
 .pages {
   display: flex;
   flex-direction: row;
-  width: 300%; /* Sesuai jumlah halaman (3) */
+  width: 300%; 
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .page {
-  width: 33.333%; /* Tiap halaman mengambil 1/3 dari lebar kontainer */
+  width: 33.333%;
   height: 100vh;
   position: relative;
   flex-shrink: 0;
@@ -109,7 +109,7 @@ body {
 }
 
 .btn-open {
-  background-color: #800020; /* Burgundy Red */
+  background-color: #800020;
   color: #fff;
   border: none;
   padding: 8px 20px;
@@ -145,13 +145,29 @@ body {
   object-fit: contain;
 }
 
-.btn-next-round {
+.content-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 80px; 
+}
+
+/* --- NAVIGASI BUTTONS (Shared for Page 2 & 3) --- */
+.btn-next-round, .nav-group {
   position: absolute;
   bottom: 30px;
   left: 50%;
-  /* Gunakan nilai awal agar saat loading tidak terlihat */
   transform: translateX(-50%) translateY(15px); 
-  
+  z-index: 100;
+  opacity: 0;
+}
+
+.nav-group {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-next-round, .btn-nav-small {
   width: 35px;         
   height: 35px;
   background-color: #800020;
@@ -164,58 +180,62 @@ body {
   justify-content: center;
   font-size: 14px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  z-index: 100;
-  opacity: 0;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
-/* Buat animasi khusus untuk elemen yang butuh posisi tengah */
-.anim-fade-center {
-  animation: fadeInCenter 1.2s ease-out forwards;
-}
-
-@keyframes fadeInCenter {
-  from {
-    opacity: 0;
-    /* Mulai dari tengah (X) dan agak bawah (Y) */
-    transform: translateX(-50%) translateY(15px);
-  }
-  to {
-    opacity: 1;
-    /* Berakhir tepat di tengah (X) tanpa offset bawah (Y) */
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-.btn-next-round:hover {
+.btn-next-round:hover, .btn-nav-small:hover {
   background-color: #5a0016;
-  /* Hover tetap menjaga posisi tengah */
-  transform: translateX(-50%) scale(1.1);
+  transform: scale(1.1);
 }
 
-/* Pastikan content-wrapper memiliki padding bawah agar gambar tidak tertutup tombol */
-.content-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 80px; 
+/* --- PAGE 3 SPECIFIC --- */
+
+/* Mengecilkan konten Div 1 di Page 3 */
+.content-kecil {
+    max-width: 70% !important; 
+    height: auto;
 }
 
-/* --- ANIMASI FADE IN --- */
+/* Merapatkan konten ke tengah (pertemuan antar div) */
+.p3-top-part {
+    justify-content: flex-end !important;
+    padding-bottom: 5px; 
+}
+
+.p3-bot-part {
+    justify-content: flex-start !important;
+    padding-top: 5px;
+    position: relative;
+}
+
+/* Frame Bot di dalam Div 2 Page 3 */
+.frame-bot-inside {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* --- ANIMATIONS --- */
 .anim-fade {
   opacity: 0;
   animation: fadeIn 1.8s ease-out forwards;
 }
 
+.anim-fade-center {
+  animation: fadeInCenter 1.2s ease-out forwards;
+}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInCenter {
+  from { opacity: 0; transform: translateX(-50%) translateY(15px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 .delay-1 { animation-delay: 0.8s; }
