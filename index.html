@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wedding Invitation – Cover</title>
+    <title>Wedding Invitation – Digital</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,17 +17,17 @@
 
                 <div class="split-container">
                     <div class="section-part anim-fade delay-1">
-                        <img src="assets/images/slide1/Top1-1.png" class="ornament" />
+                        <img src="assets/images/slide1/Top1-1.png" class="ornament" alt="Top Ornament 1" />
                     </div>
 
                     <div class="section-part anim-fade delay-2">
-                        <img src="assets/images/slide1/Top2-1.png" class="ornament" />
+                        <img src="assets/images/slide1/Top2-1.png" class="ornament" alt="Top Ornament 2" />
                     </div>
 
                     <div class="section-part anim-fade delay-3">
                         <div class="content-bottom">
                             <p>The beginning of our forever</p>
-                            <button class="btn-open" onclick="openInvitation()">Open Invitation</button>
+                            <button class="btn-open" onclick="goToPage(1)">Open Invitation</button>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,20 @@
 
             <section class="page" id="page2">
                 <div class="page-inner">
-                    <h2>Page 2</h2>
+                    <div id="content2Wrapper" class="content-wrapper" style="opacity: 0;">
+                        <img src="assets/images/slide2/content-2.png" class="full-content-img" alt="Content 2" />
+                    </div>
+
+                    <button id="btnNext2" class="btn-next-round" style="opacity: 0;" onclick="goToPage(2)">
+                        <span>&#10140;</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="page" id="page3">
+                <div class="page-inner">
+                    <h2>Page 3</h2>
+                    <p>Isi konten halaman 3 selanjutnya.</p>
                 </div>
             </section>
 
@@ -43,9 +56,19 @@
     </div>
 
     <script>
-        function openInvitation() {
+        function goToPage(index) {
             const container = document.getElementById('pagesContainer');
-            container.style.transform = 'translateX(-100%)';
+            container.style.transform = `translateX(-${index * 33.333}%)`;
+
+            if (index === 1) {
+                const content = document.getElementById('content2Wrapper');
+                const button = document.getElementById('btnNext2');
+                
+                setTimeout(() => {
+                    content.classList.add('anim-fade'); // Untuk gambar (kiri-kanan standar)
+                    button.classList.add('anim-fade-center'); // KHUSUS TOMBOL agar tetap di tengah
+                }, 600);
+            }
         }
     </script>
 

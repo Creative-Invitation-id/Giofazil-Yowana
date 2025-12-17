@@ -19,43 +19,43 @@
 body {
   margin: 0;
   font-family: "Playfair", serif;
-  background: #000;
+  background: #000; /* Latar belakang hitam di luar container */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow: hidden;
+  overflow: hidden; /* Mencegah scroll pada body utama */
 }
 
-/* --- MOBILE WRAPPER --- */
+/* --- MOBILE WRAPPER (Simulator HP) --- */
 .mobile-wrapper {
   width: 100%;
   max-width: 430px; 
   height: 100vh;
   background: #fff;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Sembunyikan scrollbar */
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
 }
 
-/* --- PAGES CONTAINER --- */
+/* --- PAGES CONTAINER (Horizontal Slide) --- */
 .pages {
   display: flex;
   flex-direction: row;
-  width: 200%;
+  width: 300%; /* Sesuai jumlah halaman (3) */
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .page {
-  width: 50%;
+  width: 33.333%; /* Tiap halaman mengambil 1/3 dari lebar kontainer */
   height: 100vh;
   position: relative;
   flex-shrink: 0;
   background: #fff;
 }
 
-/* --- FRAME --- */
+/* --- FRAME (Fit to Screen) --- */
 .frame-top {
   position: absolute;
   top: 0;
@@ -74,7 +74,7 @@ body {
   pointer-events: none;
 }
 
-/* --- PAGE 1: 3 SECTIONS --- */
+/* --- PAGE 1: 3 EQUAL SECTIONS --- */
 .split-container {
   display: flex;
   flex-direction: column;
@@ -100,6 +100,7 @@ body {
   object-fit: contain;
 }
 
+/* --- CONTENT BOTTOM (Page 1) --- */
 .content-bottom p {
   font-family: "GreatVibes", cursive;
   font-size: 16px;
@@ -108,7 +109,7 @@ body {
 }
 
 .btn-open {
-  background-color: #800020;
+  background-color: #800020; /* Burgundy Red */
   color: #fff;
   border: none;
   padding: 8px 20px;
@@ -119,30 +120,97 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
+  transition: 0.3s;
 }
 
-/* --- PAGE 2 --- */
+.btn-open:hover {
+  background-color: #5a0016;
+}
+
+/* --- PAGE 2 STYLING --- */
 .page-inner {
   height: 100%;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fdfaf7;
+  position: relative;
+  background: #fff;
 }
 
-/* --- ANIMASI FADE IN (Staggered) --- */
+.full-content-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
-/* Base class untuk elemen yang akan dianimasi */
+.btn-next-round {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  /* Gunakan nilai awal agar saat loading tidak terlihat */
+  transform: translateX(-50%) translateY(15px); 
+  
+  width: 35px;         
+  height: 35px;
+  background-color: #800020;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  z-index: 100;
+  opacity: 0;
+  transition: background-color 0.3s;
+}
+
+/* Buat animasi khusus untuk elemen yang butuh posisi tengah */
+.anim-fade-center {
+  animation: fadeInCenter 1.2s ease-out forwards;
+}
+
+@keyframes fadeInCenter {
+  from {
+    opacity: 0;
+    /* Mulai dari tengah (X) dan agak bawah (Y) */
+    transform: translateX(-50%) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    /* Berakhir tepat di tengah (X) tanpa offset bawah (Y) */
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.btn-next-round:hover {
+  background-color: #5a0016;
+  /* Hover tetap menjaga posisi tengah */
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Pastikan content-wrapper memiliki padding bawah agar gambar tidak tertutup tombol */
+.content-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 80px; 
+}
+
+/* --- ANIMASI FADE IN --- */
 .anim-fade {
   opacity: 0;
-  animation: fadeIn 1.2s ease-out forwards;
+  animation: fadeIn 1.8s ease-out forwards;
 }
 
-/* Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px); /* Sedikit efek naik agar lebih smooth */
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -150,16 +218,11 @@ body {
   }
 }
 
-/* Delay masing-masing urutan */
-.delay-1 { animation-delay: 0.8s; } /* Isi Div 1 */
-.delay-2 { animation-delay: 1.4s; } /* Isi Div 2 */
-.delay-3 { animation-delay: 2.0s; } /* Isi Div 3/Bawah */
+.delay-1 { animation-delay: 0.8s; }
+.delay-2 { animation-delay: 1.4s; }
+.delay-3 { animation-delay: 2.0s; }
 
-/* Frame muncul segera (0s) atau sedikit delay jika mau */
-.frame-top, .frame-bottom {
-  animation-delay: 0.2s;
-}
-
+/* Scrollbar Hidden */
 .mobile-wrapper::-webkit-scrollbar {
   display: none;
 }
