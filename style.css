@@ -42,13 +42,13 @@ body {
 .pages {
   display: flex;
   flex-direction: row;
-  width: 300%; 
+  width: 1000%; /* 10 halaman */
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .page {
-  width: 33.333%;
+  width: 10%; /* 1 halaman = 10% */
   height: 100vh;
   position: relative;
   flex-shrink: 0;

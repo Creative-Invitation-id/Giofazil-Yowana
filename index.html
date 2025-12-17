@@ -81,6 +81,7 @@
                             <span>&#10140;</span>
                         </button>
                     </div> 
+            </section>
 
         </div>
     </div>
@@ -88,7 +89,7 @@
     <script>
         function goToPage(index) {
             const container = document.getElementById('pagesContainer');
-            container.style.transform = `translateX(-${index * 33.333}%)`;
+            container.style.transform = `translateX(-${index * 10}%)`;
 
             if (index === 1) {
                 const content = document.getElementById('content2Wrapper');
