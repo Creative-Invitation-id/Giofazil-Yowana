@@ -112,6 +112,86 @@
               <button class="btn-nav-small" onclick="goToPage(3)">
                 <span style="transform: scaleX(-1)">&#10140;</span>
               </button>
+              <button class="btn-nav-small" onclick="goToPage(5)">
+                <span>&#10140;</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 6 -->
+        <section class="page" id="page6">
+          <div class="page-inner">
+            <h2 style="text-align: center">Page 6</h2>
+
+            <div class="nav-group" id="btnNav6">
+              <button class="btn-nav-small" onclick="goToPage(4)">
+                <span style="transform: scaleX(-1)">&#10140;</span>
+              </button>
+              <button class="btn-nav-small" onclick="goToPage(6)">
+                <span>&#10140;</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 7 -->
+        <section class="page" id="page7">
+          <div class="page-inner">
+            <h2 style="text-align: center">Page 7</h2>
+
+            <div class="nav-group" id="btnNav7">
+              <button class="btn-nav-small" onclick="goToPage(5)">
+                <span style="transform: scaleX(-1)">&#10140;</span>
+              </button>
+              <button class="btn-nav-small" onclick="goToPage(7)">
+                <span>&#10140;</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 8 -->
+        <section class="page" id="page8">
+          <div class="page-inner">
+            <h2 style="text-align: center">Page 8</h2>
+
+            <div class="nav-group" id="btnNav8">
+              <button class="btn-nav-small" onclick="goToPage(6)">
+                <span style="transform: scaleX(-1)">&#10140;</span>
+              </button>
+              <button class="btn-nav-small" onclick="goToPage(8)">
+                <span>&#10140;</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 9 -->
+        <section class="page" id="page9">
+          <div class="page-inner">
+            <h2 style="text-align: center">Page 9</h2>
+
+            <div class="nav-group" id="btnNav9">
+              <button class="btn-nav-small" onclick="goToPage(7)">
+                <span style="transform: scaleX(-1)">&#10140;</span>
+              </button>
+              <button class="btn-nav-small" onclick="goToPage(9)">
+                <span>&#10140;</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 10 -->
+        <section class="page" id="page10">
+          <div class="page-inner">
+            <h2 style="text-align: center">Page 10</h2>
+
+            <div class="nav-group" id="btnNav10">
+              <button class="btn-nav-small" onclick="goToPage(8)">
+                <span style="transform: scaleX(-1)">&#10140;</span>
+              </button>
             </div>
           </div>
         </section>
@@ -183,6 +263,55 @@
           setTimeout(() => {
             nav5.classList.add("anim-fade-center");
           }, 800);
+        }
+        /* ================= PAGE 6 ================= */
+        if (index === 5) {
+          const nav6 = document.getElementById("btnNav6");
+          nav6.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            nav6.classList.add("anim-fade-center");
+          }, 700);
+        }
+
+        /* ================= PAGE 7 ================= */
+        if (index === 6) {
+          const nav7 = document.getElementById("btnNav7");
+          nav7.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            nav7.classList.add("anim-fade-center");
+          }, 700);
+        }
+
+        /* ================= PAGE 8 ================= */
+        if (index === 7) {
+          const nav8 = document.getElementById("btnNav8");
+          nav8.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            nav8.classList.add("anim-fade-center");
+          }, 700);
+        }
+
+        /* ================= PAGE 9 ================= */
+        if (index === 8) {
+          const nav9 = document.getElementById("btnNav9");
+          nav9.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            nav9.classList.add("anim-fade-center");
+          }, 700);
+        }
+
+        /* ================= PAGE 10 ================= */
+        if (index === 9) {
+          const nav10 = document.getElementById("btnNav10");
+          nav10.classList.remove("anim-fade-center");
+
+          setTimeout(() => {
+            nav10.classList.add("anim-fade-center");
+          }, 700);
         }
       }
     </script>
