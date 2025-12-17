@@ -350,3 +350,130 @@ body {
     transform: translateX(0) scale(1.1);
   }
 }
+
+/* ===== page5 ===== */
+
+#page5 .page-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px 100px;
+  box-sizing: border-box;
+}
+
+/* BLOK UMUM */
+.p5-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.p5-top {
+  margin-top: 10px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+
+
+/* ===== TOP CONTENT ===== */
+.p5-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.p5-top .p5-img {
+  max-width: 280px; /* biar nggak terlalu kecil */
+  margin: 0 auto;
+}
+
+
+/* ===== MIDDLE (FOTO) ===== */
+/* FOTO TENGAH */
+.p5-middle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+
+.p5-middle .p5-img {
+  max-width: 170px;   /* <-- DIPERKECIL */
+  border-radius: 6px;
+}
+
+
+/* ===== BOTTOM (AYAT) ===== */
+.p5-bottom {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.p5-bottom .p5-img {
+  max-width: 300px;
+}
+
+/* ===== NAV ===== */
+#btnNav5 {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* Styling Tombol Maps */
+.btn-maps {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #800020; /* Burgundy Red */
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 15px; /* Jarak antara gambar top-content dengan tombol */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-maps:hover {
+  background-color: #5a0016;
+  transform: scale(1.05);
+}
+
+.icon-maps {
+  font-size: 14px;
+}
+
+.p7-top-part {
+    justify-content: flex-end !important;
+    padding-bottom: 20px; /* Atur jarak ke divider tengah */
+}
+
+/* Div 2: Tetap fit content (seperti sebelumnya) */
+.p7-mid-part {
+    flex: 0 1 auto !important;
+    padding: 0;
+}
+
+/* Div 3: Paksa konten ke arah atas div */
+.p7-bot-part {
+    justify-content: flex-start !important;
+    padding-top: 20px; /* Atur jarak ke divider tengah */
+}
+
+/* Gambar divider di tengah (Div 2) */
+.ornament-divider {
+    max-width: 60%; /* Atau sesuaikan ukuran aslinya */
+    height: auto;
+}
