@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wedding Invitation – Cover</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+</head>
+<body>
 
-    <div class="pages">
+    <div class="mobile-wrapper">
+        <div class="pages" id="pagesContainer">
 
-      <!-- PAGE 1 -->
-      <section class="page cover">
-        <div class="page-inner">
+            <section class="page cover">
+                <img src="assets/images/slide1/frame-top1.png" class="frame-top anim-fade" alt="Frame Top" />
+                <img src="assets/images/slide1/frame-bot1.png" class="frame-bottom anim-fade" alt="Frame Bottom" />
 
-          <img src="assets/images/slide1/frame-top1.png" class="frame-top" />
+                <div class="split-container">
+                    <div class="section-part anim-fade delay-1">
+                        <img src="assets/images/slide1/Top1-1.png" class="ornament" />
+                    </div>
 
-          <img src="assets/images/slide1/Top1-1.png" class="ornament top" />
+                    <div class="section-part anim-fade delay-2">
+                        <img src="assets/images/slide1/Top2-1.png" class="ornament" />
+                    </div>
 
-          <img src="assets/images/slide1/Top2-1.png" class="ornament mid" />
+                    <div class="section-part anim-fade delay-3">
+                        <div class="content-bottom">
+                            <p>The beginning of our forever</p>
+                            <button class="btn-open" onclick="openInvitation()">Open Invitation</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-          <img src="assets/images/slide1/frame-bot1.png" class="frame-bottom" />
+            <section class="page" id="page2">
+                <div class="page-inner">
+                    <h2>Page 2</h2>
+                </div>
+            </section>
 
         </div>
-      </section>
-
-      <!-- PAGE 2 -->
-      <section class="page" id="page2">
-        <div class="page-inner">
-          <h2>Page 2</h2>
-        </div>
-      </section>
-
     </div>
 
-  </body>
+    <script>
+        function openInvitation() {
+            const container = document.getElementById('pagesContainer');
+            container.style.transform = 'translateX(-100%)';
+        }
+    </script>
+
+</body>
 </html>

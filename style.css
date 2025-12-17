@@ -1,57 +1,68 @@
+/* --- FONTS --- */
 @font-face {
   font-family: "GreatVibes";
-  src: url("./fonts/GreatVibes-Regular.ttf");
+  src: url("./fonts/primary.ttf");
 }
 
 @font-face {
   font-family: "Playfair";
-  src: url("./fonts/PlayfairDisplay-Regular.ttf");
+  src: url("./fonts/primary.ttf");
 }
 
+/* --- RESET & BASE --- */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
   font-family: "Playfair", serif;
-  color: #5a1f1f;
-  background: #fff;
-}
-
-/* HORIZONTAL PAGE */
-.page {
-  min-width: 100vw;
-  height: 100vh;
-  scroll-snap-align: start;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.page-inner {
-  max-width: 430px;     /* ukuran HP */
-  height: 100%;
-  margin: 0 auto;
-  position: relative;
-  background: #fff;
-}
-
-
-
-/* COVER */
-.cover {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   overflow: hidden;
 }
 
-/* FRAME ATAS & BAWAH */
+/* --- MOBILE WRAPPER --- */
+.mobile-wrapper {
+  width: 100%;
+  max-width: 430px; 
+  height: 100vh;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+/* --- PAGES CONTAINER --- */
+.pages {
+  display: flex;
+  flex-direction: row;
+  width: 200%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.page {
+  width: 50%;
+  height: 100vh;
+  position: relative;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+/* --- FRAME --- */
 .frame-top {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 20vh;
-  object-fit: cover;
-  z-index: 3;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .frame-bottom {
@@ -59,126 +70,96 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 22vh;
-  object-fit: cover;
-  z-index: 3;
-}
-
-/* ORNAMENT */
-.ornament {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  z-index: 2;
-}
-
-.ornament.top {
-  top: 7vh; /* naik ke atas */
-  z-index: 4; /* pastikan di atas frame */
-  pointer-events: none;
-}
-.ornament.mid {
-  bottom: 32vh;
-  width: 85%;                /* supaya tidak nempel kiri kanan */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
+  z-index: 10;
   pointer-events: none;
 }
 
-/* CONTENT */
-.content {
-  position: relative;
-  z-index: 4;
-  text-align: center;
-  padding: 32vh 20px 26vh;
-}
-
-.subtitle {
-  font-size: 14px;
-  letter-spacing: 2px;
-}
-
-.ring {
-  width: 18px;
-  vertical-align: middle;
-}
-
-.names {
-  font-family: "GreatVibes", cursive;
-  font-size: 40px;
-  margin: 14px 0;
-  transform: translateY(-20px);
-}
-
-/* PHOTO FRAME */
-.photo-wrapper {
+/* --- PAGE 1: 3 SECTIONS --- */
+.split-container {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 20px 0;
-  transform: translateY(-20px);
-}
-
-.photo-frame {
-  position: relative;
-  width: 140px;
-  height: 140px;
-}
-
-.photo-frame .frame {
-  position: absolute;
-  inset: 0;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
-  z-index: 2;
-}
-
-.photo-frame .photo {
-  position: absolute;
-  width: 105px;
-  height: 105px;
-  top: 18px;
-  left: 18px;
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-.date {
-  font-size: 16px;
-}
-
-.tagline {
-  font-family: "GreatVibes", cursive;
-  font-size: 20px;
-}
-
-/* NEXT BUTTON */
-.next-btn {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 32px;
-  text-decoration: none;
-  color: #5a1f1f;
+  position: relative;
   z-index: 5;
-  opacity: 0.6;
 }
 
-.next-btn:hover {
-  opacity: 1;
+.section-part {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
 }
 
-/* PAGE 2 DUMMY */
-#page2 {
+.ornament {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+}
+
+.content-bottom p {
+  font-family: "GreatVibes", cursive;
+  font-size: 16px;
+  color: #5a1f1f;
+  margin-bottom: 15px;
+}
+
+.btn-open {
+  background-color: #800020;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-family: "Playfair", serif;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- PAGE 2 --- */
+.page-inner {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fdfaf7;
 }
 
-@media (max-width: 480px) {
-  .names {
-    font-size: 34px;
+/* --- ANIMASI FADE IN (Staggered) --- */
+
+/* Base class untuk elemen yang akan dianimasi */
+.anim-fade {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Sedikit efek naik agar lebih smooth */
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay masing-masing urutan */
+.delay-1 { animation-delay: 0.8s; } /* Isi Div 1 */
+.delay-2 { animation-delay: 1.4s; } /* Isi Div 2 */
+.delay-3 { animation-delay: 2.0s; } /* Isi Div 3/Bawah */
+
+/* Frame muncul segera (0s) atau sedikit delay jika mau */
+.frame-top, .frame-bottom {
+  animation-delay: 0.2s;
+}
+
+.mobile-wrapper::-webkit-scrollbar {
+  display: none;
 }
