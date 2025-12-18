@@ -16,40 +16,47 @@
   padding: 0;
 }
 
+/* MODIFIKASI LETTERBOXING: Latar belakang luar hitam */
 body {
   margin: 0;
   font-family: "Playfair", serif;
-  background: #000;
+  background: #000; 
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100dvh; /* Menggunakan dvh agar akurat di mobile */
+  width: 100vw;
   overflow: hidden;
 }
 
-/* --- MOBILE WRAPPER (Simulator HP) --- */
+/* MODIFIKASI LETTERBOXING: Wrapper dikunci rasio 9:16 */
 .mobile-wrapper {
-  width: 100%;
-  max-width: 430px; 
-  height: 100vh;
   background: #fff;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+  
+  /* Kunci Rasio */
+  height: 100dvh;
+  width: calc(100dvh * 9 / 16); 
+  
+  /* Proteksi untuk layar HP asli agar tidak gepeng */
+  max-width: 100vw;
+  max-height: calc(100vw * 16 / 9);
 }
 
 /* --- PAGES CONTAINER (Horizontal Slide) --- */
 .pages {
   display: flex;
   flex-direction: row;
-  width: 1000%; /* 10 halaman */
+  width: 1000%; 
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .page {
-  width: 10%; /* 1 halaman = 10% */
-  height: 100vh;
+  width: 10%; 
+  height: 100%;
   position: relative;
   flex-shrink: 0;
   background: #fff;
@@ -62,7 +69,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 50; /* Z-index ditingkatkan agar di atas konten */
   pointer-events: none;
 }
 
@@ -71,7 +78,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 50;
   pointer-events: none;
 }
 
@@ -138,6 +145,7 @@ body {
   align-items: center;
   position: relative;
   background: #fff;
+  padding-bottom: 75px; /* Ruang aman navigasi */
 }
 
 .full-content-img {
@@ -150,15 +158,14 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-bottom: 80px; 
 }
 
-/* --- NAVIGASI BUTTONS (Shared for Page 2 & 3) --- */
+/* MODIFIKASI NAVIGASI: Fix posisi di dalam wrapper 9:16 */
 .btn-next-round, .nav-group {
   position: absolute;
-  bottom: 30px;
+  bottom: 25px; 
   left: 50%;
-  transform: translateX(-50%) translateY(15px); 
+  transform: translateX(-50%); 
   z-index: 100;
   opacity: 0;
 }
@@ -169,8 +176,8 @@ body {
 }
 
 .btn-next-round, .btn-nav-small {
-  width: 35px;         
-  height: 35px;
+  width: 40px;         
+  height: 40px;
   background-color: #800020;
   color: white;
   border: none;
@@ -180,40 +187,33 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: 0.3s;
 }
 
 .btn-next-round:hover, .btn-nav-small:hover {
   background-color: #5a0016;
-  transform: scale(1.1);
+  transform: translateX(-50%) scale(1.1);
 }
 
-/* --- MODIFIKASI RASIO PAGE 3 --- */
-
-/* Div Pertama mengambil 1 bagian */
+/* --- PAGE 3 MODIFIKASI --- */
 .p3-div-top {
     flex: 1 !important; 
-    justify-content: flex-end !important; /* Konten tetap nempel ke bawah div */
+    justify-content: flex-end !important;
 }
-
-/* Div Kedua mengambil 2 bagian (sisa layar) */
 .p3-div-bot {
     flex: 2 !important; 
-    justify-content: flex-start !important; /* Konten tetap nempel ke atas div */
+    justify-content: flex-start !important;
 }
-
-/* Penyesuaian gambar agar tidak terlalu besar di area yang lebih kecil */
 .p3-div-top .content-kecil {
-    max-width: 80% !important; /* Mengecilkan gambar di div 1/3 tadi */
+    max-width: 80% !important;
 }
-
 #frameBot3 {
-    width: 60%;         /* Ubah persentase ini (misal: 50% atau 40%) untuk mengecilkan */
-    height: auto;       /* Menjaga rasio gambar agar tidak gepeng */
-    margin: 0 auto;     /* Memastikan tetap di tengah secara horizontal */
-    display: block;     /* Memastikan margin auto bekerja */
-    margin-top: 10px;   /* Memberi jarak sedikit dengan konten di atasnya */
+    width: 60%;         
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
 }
 
 /* --- ANIMATIONS --- */
@@ -245,61 +245,31 @@ body {
   display: none;
 }
 
-
-
+/* --- PAGE 4: GORDEN --- */
 .slide4-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-
-/* FRAME */
-.frame-left,
-.frame-right {
+.frame-left, .frame-right {
   position: absolute;
   top: 0;
   height: 100%;
   z-index: 1;
 }
-
-.frame-left {
-  left: 0;
-}
-
-.frame-right {
-  right: 0;
-}
-
-/* KONTEN */
+.frame-left { left: 0; }
+.frame-right { right: 0; }
 .slide4-content {
   position: relative;
   z-index: 2;
   text-align: center;
   padding: 60px 24px;
 }
-
-/* TEXT STYLE */
-.title-script {
-  font-family: 'Handlee', cursive; /* contoh */
-  font-size: 28px;
-  margin-bottom: 32px;
-}
-
 .name-block {
-  margin-bottom: 28px;
+  /* TAMBAHKAN JARAK DI SINI */
+  margin-bottom: 45px; /* Memberi jarak bawah antara mempelai pria dan wanita */
 }
-
-.name-block h3 {
-  font-size: 20px;
-  margin-bottom: 6px;
-}
-
-.name-block p {
-  font-size: 14px;
-  opacity: 0.8;
-}
-
 .frame-middle {
   position: relative;
   display: block;
@@ -309,323 +279,183 @@ body {
   height: auto;
   object-fit: contain;
 }
-
 .curtain-drift-left {
   transform-origin: left center;
   animation: curtain-drift-left 6s ease-in-out infinite;
   display: inline-block;
 }
-
 .curtain-drift-right {
   transform-origin: right center;
   animation: curtain-drift-right 6s ease-in-out infinite;
   display: inline-block;
 }
-
-/* Animasi Geser ke Kiri */
 @keyframes curtain-drift-left {
-  0% {
-    transform: translateX(0) scale(1.1);
-  }
-  50% {
-    transform: translateX(-8px) scale(1.1);
-  }
-  100% {
-    transform: translateX(0) scale(1.1);
-  }
+  0%, 100% { transform: translateX(0) scale(1.1); }
+  50% { transform: translateX(-8px) scale(1.1); }
 }
-
-/* Animasi Geser ke Kanan */
 @keyframes curtain-drift-right {
-  0% {
-    transform: translateX(0) scale(1.1);
-  }
-  50% {
-    transform: translateX(8px) scale(1.1);
-  }
-  100% {
-    transform: translateX(0) scale(1.1);
-  }
+  0%, 100% { transform: translateX(0) scale(1.1); }
+  50% { transform: translateX(8px) scale(1.1); }
 }
 
-/* ===== page5 ===== */
-
+/* --- PAGE 5 --- */
+/* --- PAGE 5: AYAT & FOTO --- */
 #page5 .page-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
+  /* Kurangi padding agar tidak memakan ruang konten di layar pendek */
+  padding: 20px 15px 80px; 
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly; /* Membagi ruang antar elemen secara merata */
   align-items: center;
-  justify-content: center;
-
-  padding: 40px 20px 100px;
-  box-sizing: border-box;
 }
 
-/* BLOK UMUM */
 .p5-block {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.p5-top {
-  margin-top: 10px;
-  margin-bottom: 14px;
-  justify-content: center;
-}
-
-
-/* ===== TOP CONTENT ===== */
-.p5-top {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
+/* Bagian Atas (Quote/Opening) */
 .p5-top .p5-img {
-  max-width: 280px; /* biar nggak terlalu kecil */
-  margin: 0 auto;
+  max-width: 240px; 
+  width: 80%;
+  height: auto;
 }
 
-
-/* ===== MIDDLE (FOTO) ===== */
-/* FOTO TENGAH */
+/* Bagian Tengah (Foto Utama) */
 .p5-middle {
+  margin: 10px 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 16px 0 20px;
 }
 
 .p5-middle .p5-img {
-  max-width: 170px;   /* <-- DIPERKECIL */
-  border-radius: 6px;
+  /* Gunakan max-height agar foto tidak mendorong elemen lain keluar layar */
+  max-height: 35dvh; 
+  width: auto;
+  max-width: 90%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-
-/* ===== BOTTOM (AYAT) ===== */
-.p5-bottom {
-  margin-top: 6px;
-  text-align: center;
-}
-
+/* Bagian Bawah (Ayat/Scripture) */
 .p5-bottom .p5-img {
-  max-width: 300px;
+  max-width: 320px;
+  width: 90%;
+  height: auto;
 }
 
-/* ===== NAV ===== */
+/* Navigasi khusus Page 5 */
 #btnNav5 {
   position: absolute;
-  bottom: 18px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 100;
 }
 
-/* ===== MIDDLE (FOTO) - SEKARANG LEBIH BESAR ===== */
-.p5-middle {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0; /* Memberi ruang sedikit lebih lega */
-}
-
-.p5-middle .p5-img {
-  max-width: 320px;   /* Ukuran ditingkatkan secara signifikan */
-  width: 90%;         /* Agar fleksibel di layar kecil */
-  height: auto;
-  border-radius: 8px;
-}
-
-/* ===== BOTTOM (AYAT) - SEKARANG LEBIH LEBAR ===== */
-.p5-bottom {
-  margin-top: 15px;
-  text-align: center;
-  width: 100%;
-}
-
-.p5-bottom .p5-img {
-  max-width: 380px;   /* Ukuran ditingkatkan agar teks ayat terbaca jelas */
-  width: 95%;         /* Hampir memenuhi lebar container */
-  height: auto;
-}
-
-
-/* Styling Tombol Maps */
+/* --- PAGE 7: MAPS --- */
 .btn-maps {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #800020; /* Burgundy Red */
+  background-color: #800020; 
   color: #fff;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: bold;
-  margin-top: 15px; /* Jarak antara gambar top-content dengan tombol */
+  margin-top: 15px; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s, background-color 0.2s;
 }
+.p7-top-part { justify-content: flex-end !important; padding-bottom: 20px; }
+.p7-mid-part { flex: 0 1 auto !important; padding: 0; }
+.p7-bot-part { justify-content: flex-start !important; padding-top: 20px; }
+.ornament-divider { max-width: 60%; height: auto; }
 
-.btn-maps:hover {
-  background-color: #5a0016;
-  transform: scale(1.05);
-}
-
-.icon-maps {
-  font-size: 14px;
-}
-
-.p7-top-part {
-    justify-content: flex-end !important;
-    padding-bottom: 20px; /* Atur jarak ke divider tengah */
-}
-
-/* Div 2: Tetap fit content (seperti sebelumnya) */
-.p7-mid-part {
-    flex: 0 1 auto !important;
-    padding: 0;
-}
-
-/* Div 3: Paksa konten ke arah atas div */
-.p7-bot-part {
-    justify-content: flex-start !important;
-    padding-top: 20px; /* Atur jarak ke divider tengah */
-}
-
-/* Gambar divider di tengah (Div 2) */
-.ornament-divider {
-    max-width: 60%; /* Atau sesuaikan ukuran aslinya */
-    height: auto;
-}
-
-/* --- PAGE 8 SPECIFIC STYLE --- */
-/* --- MODERN GIFT PAGE STYLING (PAGE 8) --- */
-
+/* --- PAGE 8: MODERN GIFT CARDS --- */
 .gift-container {
   display: flex;
   flex-direction: column;
-  gap: 25px; /* JARAK ANTAR KARTU: Ditambah agar tidak terlalu rapat */
+  gap: 20px; 
   width: 100%;
-  padding: 0 25px;
-  align-items: center; /* Memastikan kartu tetap di tengah */
 }
-
+#p8Div1 {
+  /* Menurunkan konten div paling atas */
+  padding-top: 30px;
+}
 .bank-card {
-  width: 100%;
-  /* UKURAN KARTU: Diperkecil dari 280px ke 240px agar lebih elegan */
-  max-width: 240px; 
+  width: 85%;
+  max-width: 240px;
   background: linear-gradient(135deg, rgba(128, 0, 32, 0.05) 0%, rgba(128, 0, 32, 0.1) 100%);
   border: 1px solid rgba(128, 0, 32, 0.2);
-  border-radius: 12px; /* Border radius disesuaikan sedikit lebih kecil */
+  border-radius: 12px;
   padding: 12px;
   text-align: center;
   margin: 0 auto;
 }
-
-.bank-name {
-  color: #800020;
-  font-weight: bold;
-  font-size: 13px; /* Ukuran font diperkecil sedikit */
-  margin-bottom: 4px;
-}
-
-.bank-number {
+.bank-name { color: #800020; font-weight: bold; font-size: 13px; }
+.bank-number { 
+  font-family: 'Courier New', Courier, monospace; 
+  font-size: 16px; 
+  font-weight: bold; 
   color: #333;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 16px; /* Ukuran nomor rekening disesuaikan */
-  font-weight: bold;
-  margin-bottom: 4px;
-  letter-spacing: 0.5px;
 }
-
-.bank-owner {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 11px; /* Ukuran nama pemilik diperkecil */
-  margin-bottom: 10px;
-}
-
 .btn-copy-modern {
   width: 100%;
-  max-width: 160px; /* Lebar tombol dibatasi agar tidak terlalu panjang */
-  margin: 0 auto;
+  max-width: 140px;
   background-color: #800020;
   color: white;
   border: none;
   padding: 6px;
   border-radius: 6px;
   font-size: 10px;
-  font-weight: bold;
+  margin: 8px auto 0;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
 }
-
-/* Tambahan agar frame-8 tetap terlihat di atas */
 #frame8 {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 55;
   pointer-events: none;
 }
-/* --- PAGE 9 RSVP STYLING --- */
-/* --- PAGE 9 RSVP STYLING --- */
 
-/* Pengaturan Div 3 agar tombol naik ke atas */
+/* --- PAGE 9: RSVP --- */
 .p9-bot-part {
-  justify-content: flex-start !important; /* Memindah konten dari tengah ke atas div */
-  padding-top: 5px !important;            /* Jarak minimal dari konten div 2 */
+  justify-content: flex-start !important;
+  padding-top: 5px !important;
 }
-
 .btn-group-rsvp {
   display: flex;
   flex-direction: column; 
   gap: 12px;
   width: 80%;
   align-items: center;
-  margin-top: 0;
 }
-
 .btn-rsvp {
   display: block;
   width: 100%;
   padding: 12px 10px;
-  background-color: #800020; /* Burgundy */
+  background-color: #800020;
   color: white;
   text-decoration: none;
   text-align: center;
   border-radius: 25px;
-  font-family: "Playfair", serif;
   font-size: 11px;
   font-weight: bold;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
 }
-
-.btn-rsvp:hover {
-  background-color: #5a0016;
-  transform: scale(1.03);
-}
-
-/* Penempatan Frame */
 #frame9 {
-  z-index: 10;
+  z-index: 55;
   pointer-events: none;
 }
 
-/* ===== page10 ===== */
-
-/* ===== PAGE 10 (FINAL) ===== */
+/* --- PAGE 10: CLOSING --- */
 #page10 .page-inner {
   display: flex;
   flex-direction: column;
@@ -633,25 +463,18 @@ body {
   justify-content: center;
   padding: 20px;
 }
-
 .img-last {
   width: 100%;
-  max-width: 320px; /* Atur angka ini (misal 280px - 350px) sesuai keinginanmu agar tidak kebesaran */
+  max-width: 320px;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
 }
-
-.img-last img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Navigasi Page 10 */
+.img-last img { width: 100%; height: auto; display: block; }
 #btnNav10 {
   position: absolute;
-  bottom: 30px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* Global Hidden Scrollbar */
+::-webkit-scrollbar { display: none; }
