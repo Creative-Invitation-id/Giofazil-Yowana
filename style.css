@@ -331,21 +331,23 @@ body {
   justify-content: center;
 }
 
-.p5-middle .p5-img {
-  /* Gunakan max-height agar foto tidak mendorong elemen lain keluar layar */
-  max-height: 35dvh; 
-  width: auto;
-  max-width: 90%;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
+
 
 /* Bagian Bawah (Ayat/Scripture) */
 .p5-bottom .p5-img {
   max-width: 320px;
   width: 90%;
   height: auto;
+}
+
+.p5-middle .p5-img {
+  /* UKURAN DIPERBESAR: 
+     Dari 35dvh menjadi 45dvh (tinggi) 
+     Dari 90% menjadi 95% (lebar) */
+  max-height: 45dvh; 
+  width: auto;
+  max-width: 95%;  /* Opsional: membuat sudut lebih halus */
+  object-fit: contain; /* Menggunakan contain agar gambar asli tidak terpotong (crop) */ /* Memberi dimensi agar lebih menonjol */
 }
 
 /* Navigasi khusus Page 5 */
