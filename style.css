@@ -478,3 +478,33 @@ body {
 
 /* Global Hidden Scrollbar */
 ::-webkit-scrollbar { display: none; }
+.music-control {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 99999; /* Pastikan di atas semua frame dan ornamen */
+  display: none; /* Akan dimunculkan via JS saat tombol OPEN diklik */
+  cursor: pointer;
+}
+
+.music-box {
+  width: 40px;
+  height: 40px;
+  background: rgba(128, 0, 32, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Animasi berputar pelan saat musik nyala */
+.rotating {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

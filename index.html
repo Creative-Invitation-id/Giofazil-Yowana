@@ -8,6 +8,15 @@
   </head>
   <body>
     <div class="mobile-wrapper">
+      <audio id="bgMusic" loop>
+        <source src="assets/images/song.mp3" type="audio/mpeg">
+      </audio>
+
+      <div id="musicControl" class="music-control" onclick="toggleMusic()">
+        <div class="music-box" id="musicBox">
+          <span id="musicIcon">🔊</span>
+        </div>
+      </div>
       <div class="pages" id="pagesContainer">
         
         <section class="page cover">
@@ -26,7 +35,7 @@
             <div class="section-part anim-fade delay-3">
               <div class="content-bottom">
                 <p>The beginning of our forever</p>
-                <button class="btn-open" onclick="goToPage(1)">Open Invitation</button>
+                <button class="btn-open" onclick="openInvitation()">Open Invitation</button>
               </div>
             </div>
           </div>
@@ -275,6 +284,37 @@
         });
       }
 
+      // 1. Fungsi khusus yang dipicu oleh tombol "Open Invitation"
+        function openInvitation() {
+            // Jalankan navigasi ke halaman pertama
+            goToPage(1); 
+
+            // Jalankan musik (Ini aman karena dipicu langsung oleh klik tombol)
+            const bgMusic = document.getElementById('bgMusic');
+            const musicControl = document.getElementById('musicControl');
+            
+            bgMusic.currentTime = 17; // Mulai dari detik 17
+            bgMusic.play().then(() => {
+                musicControl.style.display = 'flex'; // Munculkan tombol music
+                document.getElementById('musicBox').classList.add('rotating');
+            }).catch(error => {
+                // Jika tetap diblokir, tombol muncul agar user bisa klik manual
+                musicControl.style.display = 'flex';
+            });
+        }
+
+      function toggleMusic() {
+          if (bgMusic.paused) {
+              bgMusic.play();
+              musicIcon.innerText = '🔊';
+              musicBox.classList.add('rotating');
+          } else {
+              bgMusic.pause();
+              musicIcon.innerText = '🔇';
+              musicBox.classList.remove('rotating');
+          }
+      }
+
       function goToPage(index) {
         const container = document.getElementById("pagesContainer");
         container.style.transform = `translateX(-${index * 10}%)`;
@@ -467,10 +507,10 @@
           }, 400);
         }
 
-        
 
         
       }
+      
     </script>
   </body>
 </html>
