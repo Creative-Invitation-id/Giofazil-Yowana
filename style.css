@@ -357,6 +357,35 @@ body {
   z-index: 100;
 }
 
+/* --- PAGE 6: FIT TO SCREEN --- */
+#page6 .page-inner {
+  /* Menghilangkan padding agar gambar bisa benar-benar fit ke bawah jika perlu */
+  padding-bottom: 0; 
+  justify-content: center; /* Memastikan konten tetap di tengah secara vertikal */
+}
+
+#page6 .content-wrapper {
+  width: 100%;
+  height: 100%; /* Mengambil tinggi penuh */
+  display: flex;
+  align-items: center; /* Center vertikal */
+  justify-content: center; /* Center horizontal */
+}
+
+#page6 .full-content-img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover akan membuat gambar memenuhi layar (mungkin terpotong sedikit) */
+  /* object-fit: contain akan membuat seluruh gambar terlihat tanpa terpotong */
+  object-fit: cover; 
+}
+
+/* Pastikan navigasi tetap berada di atas gambar */
+#page6 .nav-group {
+  z-index: 100;
+  bottom: 25px; /* Jarak dari bawah layar */
+}
+
 /* --- PAGE 7: MAPS --- */
 .btn-maps {
   display: inline-flex;
