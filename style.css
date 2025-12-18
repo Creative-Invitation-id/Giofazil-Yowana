@@ -539,3 +539,42 @@ body {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* --- PAGE 10: Tumpukan Gambar --- */
+.img-last-container {
+  width: 100%;
+  max-width: 300px; /* Diperbesar agar pembungkusnya tidak membatasi gambar */
+  margin: 0 auto;
+}
+
+.image-stack {
+  position: relative; 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-base {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.img-overlay {
+  position: absolute; 
+  /* PERBESAR KIRI-KANAN: tadinya 50%, kita naikkan ke 80% */
+  width: 70%;         
+  height: auto;
+  
+  /* NAIKKAN GAMBAR: tadinya 45%, kita kurangi ke 35% agar lebih naik */
+  top: 30%;           
+  
+  left: 50%;          
+  transform: translate(-50%, -50%); 
+  z-index: 2;         
+  
+  /* Efek Smooth Floating */
+  animation: smoothFloat 4s ease-in-out infinite;
+}
+
