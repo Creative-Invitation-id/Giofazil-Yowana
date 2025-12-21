@@ -102,6 +102,25 @@ body {
   padding: 0 20px;
 }
 
+.p1-top {
+  flex: 1.5 !important; 
+  justify-content: flex-end !important; /* Konten nempel ke bawah div */
+  padding-bottom: 10px; /* Jarak opsional agar tidak terlalu mepet div tengah */
+}
+
+/* Div Kedua (Tengah) - Mengambil 1.5 bagian */
+.p1-mid {
+  flex: 1.5 !important; 
+  justify-content: flex-start !important; /* Konten nempel ke atas div */
+  padding-top: 10px; /* Jarak opsional agar tidak terlalu mepet div atas */
+}
+
+/* Div Ketiga (Bawah) - Mengambil 1 bagian saja (lebih kecil) */
+.p1-bot {
+  flex: 1 !important; 
+  justify-content: flex-start !important; /* Konten tetap di tengah */
+}
+
 .ornament {
   max-width: 90%;
   max-height: 85%;
